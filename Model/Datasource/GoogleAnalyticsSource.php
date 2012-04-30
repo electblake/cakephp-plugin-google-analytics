@@ -82,12 +82,14 @@ class GoogleAnalyticsSource extends DataSource
     {
         $accounts = $this->get('analytics/feeds/accounts/default');
         $results = $this->__to_array($accounts);
-        $entries = Set::extract('/Feed/Entry', $results);
+        $entries = Set::extract('/feed/entry', $results);
         $data = array();
+
         foreach ($entries as $entry)
         {
             // sometimes the the keys are ucfirst'ed, sometimes not...
-            $entry = array_change_key_case($entry['Entry'], CASE_LOWER);
+            $entry = array_change_key_case($entry['entry'], CASE_LOWER);
+
             $accountId = $this->__extract_property_value(
                 $entry, 'accountId');
             $accountName = $this->__extract_property_value(
@@ -99,8 +101,8 @@ class GoogleAnalyticsSource extends DataSource
             $account = array('Account' => array(
                 'id' => $entry['id'],
                 'updated' => $entry['updated'],
-                'title' => $entry['title']['value'],
-                'tableId' => str_replace('ga:', '', $entry['tableid']),
+                'title' => $entry['title']['@'],
+                'tableId' => str_replace('ga:', '', $entry['dxp:tableid']),
                 'accountId' => $accountId,
                 'accountName' => $accountName,
                 'profileId' => $profileId,
