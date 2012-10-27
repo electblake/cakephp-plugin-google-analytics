@@ -1,0 +1,30 @@
+<?php
+/**
+ * Tracker Configuration
+ *
+ *
+ * @param mode string
+ * Options are:
+ *    domain - A single domain - Example: www.webby.com
+ *    subdomain - One domain with multiple subdomains Examples: www.webby.com, apps.webby.com, store.webby.com
+ *    domains - multiple top-level domains - Examples: www.webby.co.uk, www.webby.com, www.webby.co.uk
+ */
+$config = array(
+  'GoogleAnalytics' => array(
+    'Tracker' => array(
+    
+      // can be domain, subdomains, or domains see above or google.com/analytics for deets.
+      'mode' => 'domains',
+      
+      // your full account+profile id
+      'account' => 'UA-XXXXXXX-YY', // ex UA-1234567-66
+      
+      // what is your domain (don't incldue sub)
+      'domain' => 'domainy.com',
+      
+      // allow domain extensions like .dev, .local, .code etc (otherwise block google analytics on dev environment)
+      'allowDevUrl' => false,
+    )
+  )
+);
+?>
