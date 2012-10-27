@@ -1,4 +1,5 @@
 # Install
+* make sure your `app/Config/bootstrap.php` includes `CakePlugin::load('GoogleAnalytics');`
 * Copy .. `app/Plugin/GoogleAnalytics/View/Helper/googleanalytics.php.default` to `app/Config/googleanalytics.php`
 * Edit details in `app/Config/googleanalytics.php` to suit your needs
 * Make sure your `bootstrap.php` includes 
