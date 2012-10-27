@@ -1,5 +1,5 @@
 # Install
-* Copy .. `app/Plugin/GoogleAnalytics/View/Helper/googleanalytics.php.defaul`t to `app/Config/googleanalytics.php`
+* Copy .. `app/Plugin/GoogleAnalytics/View/Helper/googleanalytics.php.default` to `app/Config/googleanalytics.php`
 * Edit details in `app/Config/googleanalytics.php` to suit your needs
 * Make sure your `bootstrap.php` includes 
 * include in your `AppController.php`   `public $helpers = array('GoogleAnalytics.GATracker');`
