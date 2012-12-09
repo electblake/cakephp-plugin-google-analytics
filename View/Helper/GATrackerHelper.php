@@ -11,17 +11,25 @@ class GATrackerHelper extends AppHelper {
 	* Fail safe locale to 'en_US'
 	*/
 	public function __construct(View $View, $settings = array()){
+		App::uses('GoogleAnalyticsException', 'GoogleAnalytics.Lib');
+
 		$this->_set($settings);
 		$this->view = $View;
-		
-		Configure::load('googleanalytics');
-		$this->config = Configure::read('GoogleAnalytics.Tracker');
-
+		$this->loadConfig();
 		$this->init_gaq();
   	
 		parent::__construct($View, $settings);
 	}
 	
+	private function loadConfig() {
+		try {
+			Configure::load('googleanalytics');
+			$this->config = Configure::read('GoogleAnalytics.Tracker');
+		} catch (Exception $e) {
+			SessionComponent::setFlash('Error loading configuration file googleanalytics.php');
+		}
+	}
+
 	private function init_gaq($options = array()) {
   	
   	
